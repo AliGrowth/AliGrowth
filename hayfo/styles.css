@@ -30,7 +30,7 @@ button { color: inherit; }
 .wordmark { display: inline-flex; align-items: center; gap: 9px; font-size: 23px; font-weight: 700; letter-spacing: -.08em; }
 .wordmark-mark { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--peach); font-size: 17px; }
 .wordmark-period { color: #b7785c; }
-.wordmark-logo { height: 62px; width: auto; display: block; object-fit: contain; }
+.wordmark-logo { height: 42px; width: auto; display: block; object-fit: contain; }
 .main-nav { display: flex; gap: 35px; margin-inline-start: 47px; font-size: 12px; color: #5b5953; }
 .main-nav a, .footer-links a { transition: color .2s ease; }
 .main-nav a:hover, .footer-links a:hover { color: #b7785c; }
@@ -145,7 +145,7 @@ h1 em, h2 em { font-family: var(--serif); font-weight: 400; color: #b77b60; }
 .newsletter-form button span { margin-right: 8px; font-size: 15px; }
 .site-footer { min-height: 150px; padding: 34px 9%; display: grid; grid-template-columns: 1fr 1fr 1fr auto; align-items: center; gap: 20px; background: var(--ink); color: #f8f5ef; }
 .footer-brand { font-size: 20px; }
-.footer-brand .wordmark-logo { height: 74px; }
+.footer-brand .wordmark-logo { height: 38px; }
 .footer-brand .wordmark-mark { color: var(--ink); width: 29px; height: 29px; }
 .footer-brand .wordmark-period { color: #d2a48b; }
 .site-footer > p { font-size: 10px; color: #bcb8af; }
@@ -222,8 +222,8 @@ h1 em, h2 em { font-family: var(--serif); font-weight: 400; color: #b77b60; }
   .announcement { font-size: 9px; gap: 8px; }
   .site-header { height: 65px; }
   .wordmark { font-size: 20px; }
-  .wordmark-logo { height: 48px; }
-  .footer-brand .wordmark-logo { height: 58px; }
+  .wordmark-logo { height: 36px; }
+  .footer-brand .wordmark-logo { height: 38px; }
   .wordmark-mark { width: 29px; height: 29px; }
   .main-nav { display: none; }
   .header-actions { gap: 9px; }
