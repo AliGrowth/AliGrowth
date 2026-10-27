@@ -2,49 +2,43 @@ const products = [
   {
     id: "bbk-infrared-massager",
     name: "جهاز BBK للمساج 5 في 1",
-    description: "تصميم فضي · مساج مع الأشعة تحت الحمراء",
+    description: "جهاز مساج يدوي بتصميم فضي ورؤوس متعددة للاستخدام على مناطق مختلفة من الجسم. صُمم بخمس وظائف، مع خاصية الأشعة تحت الحمراء حسب وصف المنتج. يُرجى مراجعة تعليمات الاستخدام المرفقة.",
     quantity: 1,
     price: 228,
     oldPrice: null,
     label: "5 في 1",
-    image: "https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=900&q=80",
-    imageAlt: "جلسة مساج واسترخاء توضيحية لجهاز المساج متعدد الوظائف",
-    artLabel: "BBK",
-    artDetail: "5 IN 1 · INFRARED",
+    image: "images/قلم التدليك1.jpg",
+    imageAlt: "صورة توضيحية لجهاز قلم تدليك فضي متعدد الرؤوس",
     supplierUrl: "https://www.alibaba.com/product-detail/BBK-Silver-5-in-1-Infrared_1601453698479.html?source_from=alilens_1793116095201",
   },
   {
     id: "shiatsu-neck-massager",
     name: "جهاز مساج الرقبة Shiatsu",
-    description: "جهاز تدليك كهربائي للرقبة والكتفين",
+    description: "جهاز كهربائي مخصص لتدليك منطقة الرقبة والكتفين بتقنية شياتسو التي تحاكي حركات العجن. اتبعوا تعليمات الشركة المصنّعة للاستخدام.",
     quantity: 1,
     price: 299,
     oldPrice: null,
     label: "مساج الرقبة",
-    image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=900&q=80",
-    imageAlt: "جلسة تدليك وعناية بالوجه والرقبة",
-    artLabel: "SHIATSU",
-    artDetail: "NECK MASSAGER",
+    image: "images/تدليك الرقبة.jpg",
+    imageAlt: "صورة توضيحية لجهاز كهربائي لتدليك الرقبة والكتفين",
     supplierUrl: "https://www.alibaba.com/product-detail/Hot-Sale-Electric-Shiatsu-Neck-and_1601014957551.html?source_from=alilens_1793116197941",
   },
   {
     id: "ems-mini-face-massager",
     name: "جهاز مساج الوجه EMS ميني",
-    description: "جهاز كهربائي صغير · 7 ألوان",
+    description: "جهاز مساج وجه كهربائي بحجم ميني، يأتي بسبعة ألوان أو أنماط ضوئية حسب وصف المنتج. أضيفوه إلى روتين العناية بالوجه واستخدموه وفق تعليمات الشركة المصنّعة.",
     quantity: 1,
-    price: null,
+    price: 229,
     oldPrice: null,
     label: "7 ألوان",
-    image: "https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=900&q=80",
-    imageAlt: "منتجات عناية بالبشرة توضيحية لجهاز مساج الوجه",
-    artLabel: "EMS",
-    artDetail: "7 COLOR · MINI",
+    image: "images/face-massage-user.png",
+    imageAlt: "صورة توضيحية لجهاز كهربائي لمساج الوجه",
     supplierUrl: "https://www.alibaba.com/product-detail/7-Color-Mini-Electric-EMS-Wrinkle_1601844583772.html?source_from=alilens_1793116333493",
   },
 ];
 
 const currency = new Intl.NumberFormat("ar-MA", { maximumFractionDigits: 2 });
-const getPrice = (amount) => `${currency.format(amount)} د.م.`;
+const getPrice = (amount) => `درهم ${currency.format(amount)}`;
 const productGrid = document.querySelector("#product-grid");
 const cartItems = document.querySelector("#cart-items");
 const cartCount = document.querySelector("#cart-count");
@@ -66,7 +60,7 @@ function loadCart() {
     const saved = JSON.parse(localStorage.getItem("hayfo-cart") || "[]");
     if (!Array.isArray(saved)) return [];
     return saved.filter((item) =>
-      products.some((product) => product.id === item.id && product.price !== null)
+      products.some((product) => product.id === item.id)
       && Number.isInteger(item.quantity)
       && item.quantity > 0
       && item.quantity <= 99
@@ -94,14 +88,15 @@ function renderProducts() {
           : `<div class="product-art" aria-label="${product.name}"><span>${product.artLabel}</span><small>${product.artDetail}</small></div>`}
         <span class="product-label">${product.label}</span>
       </div>
+      <h3 class="product-title">${product.name}</h3>
       <div class="product-info">
-        <div><h3>${product.name}</h3><p>${product.description}</p></div>
+        <div><p>${product.description}</p></div>
         <div class="product-price">${product.price === null ? `<span class="price-on-request">السعر عند الطلب</span>` : `${getPrice(product.price)}${product.oldPrice ? `<del>${getPrice(product.oldPrice)}</del>` : ""}`}</div>
       </div>
-      ${product.supplierUrl ? `<a class="supplier-link" href="${product.supplierUrl}" target="_blank" rel="noopener noreferrer">شاهدي المنتج عند المورد <span aria-hidden="true">↗</span></a>` : ""}
-      ${product.price === null
-        ? `<a class="add-to-cart quote-button" href="${product.supplierUrl}" target="_blank" rel="noopener noreferrer">اطلبي السعر <span aria-hidden="true">↗</span></a>`
-        : `<button class="add-to-cart" type="button" data-add="${product.id}">أضيفي إلى السلة <span aria-hidden="true">＋</span></button>`}
+      <button class="add-to-cart" type="button" data-add="${product.id}">
+        <svg class="add-to-cart-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 1.9-1.4L22 9H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+        <span>أضيفوا إلى السلة</span>
+      </button>
     </article>
   `).join("");
 }
@@ -111,15 +106,28 @@ function renderCart() {
     const product = products.find((entry) => entry.id === item.id);
     return total + (product ? product.quantity * item.quantity : 0);
   }, 0);
+  const hasUnpricedProduct = cart.some((item) =>
+    products.find((entry) => entry.id === item.id)?.price === null
+  );
   const subtotal = cart.reduce((total, item) => {
     const product = products.find((entry) => entry.id === item.id);
-    return total + (product ? product.price * item.quantity : 0);
+    return total + (product && product.price !== null ? product.price * item.quantity : 0);
   }, 0);
+  const discountRate = hasUnpricedProduct ? 0 : count >= 3 ? 0.25 : count === 2 ? 0.15 : 0;
+  const discount = subtotal * discountRate;
   cartCount.textContent = String(count);
   drawerCount.textContent = `(${count})`;
-  cartTotal.textContent = getPrice(subtotal);
+  document.querySelector("#cart-subtotal").textContent = hasUnpricedProduct
+    ? `${getPrice(subtotal)} + السعر عند الطلب`
+    : getPrice(subtotal);
+  document.querySelector("#cart-discount-row").hidden = discountRate === 0;
+  document.querySelector("#cart-discount-label").textContent = `خصم ${Math.round(discountRate * 100)}٪`;
+  document.querySelector("#cart-discount").textContent = `− ${getPrice(discount)}`;
+  cartTotal.textContent = hasUnpricedProduct ? `${getPrice(subtotal)} + السعر عند الطلب` : getPrice(subtotal - discount);
   emptyCart.hidden = count > 0;
   drawerFooter.hidden = count === 0;
+  document.querySelector("#cart-price-note").hidden = !hasUnpricedProduct;
+  document.querySelector("#checkout-button").disabled = hasUnpricedProduct;
   cartItems.innerHTML = cart.map((item) => {
     const product = products.find((entry) => entry.id === item.id);
     if (!product) return "";
@@ -129,14 +137,14 @@ function renderCart() {
           ? `<img src="${product.image}" alt="" />`
           : `<div class="cart-item-art" aria-hidden="true">${product.artLabel}</div>`}
         <div>
-          <h3>${product.name}</h3><p>${getPrice(product.price)}</p>
+          <h3>${product.name}</h3><p>${product.price === null ? "السعر عند الطلب" : getPrice(product.price)}</p>
           <div class="quantity-control" aria-label="عدد الباقات">
             <button type="button" data-quantity="${product.id}" data-change="-1" aria-label="تقليل الكمية">−</button>
             <span>${item.quantity}</span>
             <button type="button" data-quantity="${product.id}" data-change="1" aria-label="زيادة الكمية">＋</button>
           </div>
         </div>
-        <span class="cart-item-price">${getPrice(product.price * item.quantity)}</span>
+        <span class="cart-item-price">${product.price === null ? "عند الطلب" : getPrice(product.price * item.quantity)}</span>
       </article>
     `;
   }).join("");
@@ -170,6 +178,10 @@ function closeCart() {
 }
 
 function openCheckout() {
+  if (cart.some((item) => products.find((product) => product.id === item.id)?.price === null)) {
+    showToast("حددي ثمن المنتجات التي أُضيفت عند الطلب قبل إتمام الطلب.");
+    return;
+  }
   closeCart();
   checkoutModal.classList.add("open");
   checkoutModal.setAttribute("aria-hidden", "false");
@@ -192,7 +204,10 @@ productGrid.addEventListener("click", (event) => {
   else cart.push({ id, quantity: 1 });
   saveCart();
   renderCart();
-  showToast("أُضيف المنتج إلى سلتكِ");
+  const product = products.find((entry) => entry.id === id);
+  showToast(product?.price === null
+    ? "أُضيف المنتج إلى السلة؛ السعر عند الطلب."
+    : "أُضيف المنتج إلى السلة");
 });
 
 cartItems.addEventListener("click", (event) => {
@@ -243,7 +258,7 @@ document.querySelector("#finish-order").addEventListener("click", () => {
 document.querySelector("#newsletter-form").addEventListener("submit", (event) => {
   event.preventDefault();
   event.currentTarget.reset();
-  showToast("شكراً لاهتمامكِ! الاشتراك غير مفعّل في النسخة التجريبية.");
+  showToast("شكراً لاهتمامكم! الاشتراك غير مفعّل في النسخة التجريبية.");
 });
 
 renderProducts();
