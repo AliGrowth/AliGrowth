@@ -67,9 +67,8 @@ h1 em, h2 em { font-family: var(--serif); font-weight: 400; color: #b77b60; }
 .hero-image { position: absolute; inset: 0; background: #f3ece3 url("images/hayfo-hero-collage.png") center / contain no-repeat; }
 .hero-visual-title { position: absolute; z-index: 2; top: 18px; left: 18px; right: 18px; margin: 0; padding: 8px 12px; border-radius: 6px; background: rgba(255, 254, 250, .88); color: var(--ink); text-align: center; font-size: clamp(18px, 2.2vw, 27px); line-height: 1.5; }
 .hero-image-wash { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(247,244,239,.08), transparent 34%); }
-.hero-caption { position: absolute; left: 8%; bottom: 11%; display: flex; align-items: center; gap: 12px; color: white; font-size: 11px; line-height: 1.8; }
-.hero-caption b { font-size: 13px; font-weight: 500; }
-.caption-icon { display: grid; place-items: center; width: 35px; height: 35px; border: 1px solid rgba(255,255,255,.65); border-radius: 50%; font-size: 18px; }
+.hero-caption { position: absolute; right: 28px; bottom: 46px; z-index: 3; display: flex; align-items: center; gap: 8px; color: var(--ink); background: rgba(255, 254, 250, .88); padding: 7px 10px; border-radius: 4px; font-size: 10px; }
+.hero-caption b { color: #b77b60; font-weight: 500; }
 .hero-index { position: absolute; bottom: 20px; right: 28px; color: white; font: 10px "DM Sans", sans-serif; letter-spacing: .1em; }
 .hero-index span { color: #ddd0c3; }
 .hero-deco { position: absolute; color: #c89b7c; font-size: 20px; }
@@ -264,8 +263,6 @@ h1 em, h2 em { font-family: var(--serif); font-weight: 400; color: #b77b60; }
 .text-link { font-size: 14px; }
 .hero-proof strong { font-size: 12px; }
 .hero-proof small { color: #5b5953; font-size: 11px; }
-.hero-caption { padding: 9px 13px; border-radius: 4px; background: rgba(25, 24, 22, .76); font-size: 14px; }
-.hero-caption b { font-size: 15px; }
 .hero-index { padding: 5px 8px; border-radius: 3px; background: rgba(25, 24, 22, .72); font-size: 12px; }
 .benefit-strip b { font-size: 13px; }
 .benefit-strip small { color: #57554f; font-size: 11px; }
