@@ -38,7 +38,7 @@ const products = [
 ];
 
 const currency = new Intl.NumberFormat("ar-MA", { maximumFractionDigits: 2 });
-const getPrice = (amount) => `درهم ${currency.format(amount)}`;
+const getPrice = (amount) => `<span class="money" dir="rtl"><bdi class="money-amount" dir="ltr">${currency.format(amount)}</bdi><span class="money-currency" dir="rtl">درهم</span></span>`;
 const productGrid = document.querySelector("#product-grid");
 const cartItems = document.querySelector("#cart-items");
 const cartCount = document.querySelector("#cart-count");
@@ -86,7 +86,7 @@ function renderProducts() {
         ${product.image
           ? `<img src="${product.image}" alt="${product.imageAlt}" loading="lazy" />`
           : `<div class="product-art" aria-label="${product.name}"><span>${product.artLabel}</span><small>${product.artDetail}</small></div>`}
-        <span class="product-label">${product.label}</span>
+        <span class="product-label${product.id === "ems-mini-face-massager" ? " product-label-bottom" : ""}">${product.label}</span>
       </div>
       <h3 class="product-title">${product.name}</h3>
       <div class="product-info">
@@ -117,13 +117,13 @@ function renderCart() {
   const discount = subtotal * discountRate;
   cartCount.textContent = String(count);
   drawerCount.textContent = `(${count})`;
-  document.querySelector("#cart-subtotal").textContent = hasUnpricedProduct
+  document.querySelector("#cart-subtotal").innerHTML = hasUnpricedProduct
     ? `${getPrice(subtotal)} + السعر عند الطلب`
     : getPrice(subtotal);
   document.querySelector("#cart-discount-row").hidden = discountRate === 0;
   document.querySelector("#cart-discount-label").textContent = `خصم ${Math.round(discountRate * 100)}٪`;
-  document.querySelector("#cart-discount").textContent = `− ${getPrice(discount)}`;
-  cartTotal.textContent = hasUnpricedProduct ? `${getPrice(subtotal)} + السعر عند الطلب` : getPrice(subtotal - discount);
+  document.querySelector("#cart-discount").innerHTML = `− ${getPrice(discount)}`;
+  cartTotal.innerHTML = hasUnpricedProduct ? `${getPrice(subtotal)} + السعر عند الطلب` : getPrice(subtotal - discount);
   emptyCart.hidden = count > 0;
   drawerFooter.hidden = count === 0;
   document.querySelector("#cart-price-note").hidden = !hasUnpricedProduct;
