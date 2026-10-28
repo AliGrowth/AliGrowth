@@ -261,5 +261,13 @@ document.querySelector("#newsletter-form").addEventListener("submit", (event) =>
   showToast("شكراً لاهتمامكم! الاشتراك غير مفعّل في النسخة التجريبية.");
 });
 
+document.addEventListener("contextmenu", (event) => {
+  if (event.target.closest("img")) event.preventDefault();
+});
+
+document.addEventListener("dragstart", (event) => {
+  if (event.target.closest("img")) event.preventDefault();
+});
+
 renderProducts();
 renderCart();
