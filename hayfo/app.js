@@ -84,7 +84,7 @@ function renderProducts() {
     <article class="product-card">
       <div class="product-photo">
         ${product.image
-          ? `<img src="${product.image}" alt="${product.imageAlt}" loading="lazy" />`
+          ? `<img src="${product.image}?v=457cf47" alt="${product.imageAlt}" loading="eager" />`
           : `<div class="product-art" aria-label="${product.name}"><span>${product.artLabel}</span><small>${product.artDetail}</small></div>`}
         <span class="product-label${product.id === "ems-mini-face-massager" ? " product-label-bottom" : ""}">${product.label}</span>
       </div>
