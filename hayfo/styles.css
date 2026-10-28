@@ -67,7 +67,7 @@ h1 em, h2 em { font-family: var(--serif); font-weight: 400; color: #b77b60; }
 .proof-divider { height: 25px; width: 1px; background: #ddd6cc; margin: 0 5px; }
 .rating strong { color: #ba805f; letter-spacing: 2px; font-size: 10px; }
 .hero-visual { position: relative; min-height: 585px; background: #e9ddd2; }
-.hero-image { position: absolute; inset: 0; background: #f3ece3 url("images/hayfo-hero-collage.png") center / contain no-repeat; }
+.hero-image { position: absolute; inset: 0; background: #f3ece3 url("images/hayfo-hero-collage.png?v=20") center / cover no-repeat; }
 .hero-visual-title { position: absolute; z-index: 2; top: 18px; left: 18px; right: 18px; margin: 0; padding: 8px 12px; border-radius: 6px; background: rgba(255, 254, 250, .88); color: var(--ink); text-align: center; font-size: clamp(18px, 2.2vw, 27px); line-height: 1.5; }
 .hero-image-wash { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(247,244,239,.08), transparent 34%); }
 .hero-caption { position: absolute; right: 28px; bottom: 46px; z-index: 3; display: flex; align-items: center; gap: 8px; color: var(--ink); background: rgba(255, 254, 250, .88); padding: 7px 10px; border-radius: 4px; font-size: 10px; }
